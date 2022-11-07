@@ -50,8 +50,8 @@ layout: page
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
-        {% if page.excerpt %}
-          {{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}
+        {% if post.excerpt %}
+          {{ post.excerpt | markdownify | strip_html | truncate: 200 | escape }}
         {% else %}
           {{ content | markdownify | strip_html | truncate: 200 | escape }}
         {% endif %}
