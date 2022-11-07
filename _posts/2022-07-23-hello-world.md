@@ -5,7 +5,7 @@ date: 2022-07-23
 categories: [Random]
 tags: [Test,Writing]
 excerpt: This is the first official post of this blog.
-excerpt-separator: <!--more-->
+excerpt_separator: <!--more-->
 ---
 
 <!--more-->
