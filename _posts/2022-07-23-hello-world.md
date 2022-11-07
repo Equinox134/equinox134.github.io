@@ -461,7 +461,7 @@ endmodule
 ```
 
 ### Piet
-![Piet](https://github.com/Equinox134/equinox134.github.io/blob/master/assets/img/2022-07-23-hello-world/piet%20hello%20world.png)
+![Piet](https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-07-23-hello-world/piet%20hello%20world.png)
 
 ### Notes and Final Thoughts
 * There are a lot of programming languages in this world
