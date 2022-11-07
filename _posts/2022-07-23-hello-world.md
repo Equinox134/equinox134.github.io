@@ -4,11 +4,9 @@ author: Equinox134
 date: 2022-07-23
 categories: [Random]
 tags: [Test,Writing]
-description: This is the first official post of this blog.
-excerpt_separator: <!--more-->
+excerpt: This is the first official post of this blog.
 ---
 
-<!--more-->
 ### Introduction
 
 So I created blog using GitHub Pages. My plan is to use this blog as a place to write about topics that I studied/learned about, and other random stuff.
