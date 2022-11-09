@@ -2,7 +2,7 @@
 title: DFS and BFS
 author: Equinox134
 date: 2022-07-24
-categories: [Computer Science, Algorithm, Graph Algorithm]
+categories: [Algorithm, Graph Algorithm]
 tags: [Computer Science, Algorithms]
 math: true
 excerpt: An introduction to DFS and BFS
