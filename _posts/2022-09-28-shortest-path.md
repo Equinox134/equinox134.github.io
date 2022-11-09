@@ -2,7 +2,7 @@
 title: Shortest Path Algorithms
 author: Equinox134
 date: 2022-09-28
-categories: [Algorithm, Graph Algorithm]
+categories: [Computer Science, Algorithm, Graph Algorithm]
 tags: [Computer Science, Algorithms]
 math: true
 excerpt: Explenation of algorithms for finding the shortest path
