@@ -160,8 +160,7 @@ void Dijkstra(int start){
 
 If you use a min heap in while implementing the code above, there is no need to multiply -1.
 
-The time complexity of this algorithm is $O(ElogV)$, where E is the number of edges, because a total of E edges are pushed into the priority queue, 
-and it takes $O(logV)$ time to find the closest node.
+The time complexity of this algorithm is $O((V+E)logV)$.
 
 ## Bellman-Ford Algorithm
 
