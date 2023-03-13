@@ -72,7 +72,7 @@ As I have said in the introduction, I was going to write more, but didn't. Mabye
 [Lodeblog]: https://lodev.org/cgtutor/raycasting.html
 [githublink]: https://github.com/Equinox134/C-Bitmap-Raycaster
 
-[wolfenstein3d]: 
-[raycastdemoimage]: 
-[gridrayimage]: 
-[varimage]: 
+[wolfenstein3d]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/wolfenstein3d.png
+[raycastdemoimage]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/Simple_raycasting_with_fisheye_correction.gif
+[gridrayimage]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/grid%20intersection.png
+[varimage]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/variables.png
