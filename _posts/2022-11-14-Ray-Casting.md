@@ -11,7 +11,7 @@ excerpt: How ray casting works
 
 Ray casting is a method used to create a 3D scene on a 2D map. Ray casting was used back in the day when computers didn't have 3D engines. The most famous example of a game that uses this is Wolfenstein 3D, made in 1992.
 
-<img src="https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/wolfenstein3d.png" width="200">
+![Image of Wolfenstein 3D][wolfenstein3d]
 
 In this post, I want to explain how ray casting works. I originally was also going to explain how to implement it, but my motivation disappeared. Mabye later.
 
@@ -43,20 +43,23 @@ There could be many methods for finding the distance, and in complex situations 
 
 We can find the distance by simply checking every grid line the ray intersects, and checking if that grid line is contained in a wall.
 
-<img src="https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/grid%20intersection.png" width="200">
+![Grid intersection][gridrayimage]
 
 Given the direction or angle of the ray, we can calculate the distance from the camera to the nearest horizontal line of the grid, and the nearest vertical line of the grid(I will call each of these $sideX$ and $sideY$). We can also calculate the distance between the horizontal and vertical grid lines in the rays direction(I will call these distances $deltaX$ and $deltaY$).
 
 Here is an image showing the four values; $sideX$, $sideY$, $deltaX$, and $deltaY$.
 
-<img src="https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/variables.png" width="200">
+![Grid distance][varimage]
 
 The values can be calculated using some simple trigonometry. Here, $camX$ and $camY$ are the x and y coordinates of the camera, and $X$ and $Y$ are the x and y coordinates of the grid the camera is inside. $\theta$ is the angle of the ray, in radians.
 
-* $deltaX = |\frac{1}{cos\theta}|$
-* $deltaY = |\frac{1}{sin\theta}|$
-* $sideX = |camX - X|deltaX$
-* $sideY = |camY - Y|deltaY$
+$$ deltaX = |\frac{1}{cos\theta}| $$
+
+$$ deltaY = |\frac{1}{sin\theta}| $$
+
+$$ sideX = |camX - X|deltaX $$
+
+$$ sideY = |camY - Y|deltaY $$
 
 Starting from the shorter one of $sideX$ and $sideY$, we can continuously add $deltaX$ or $deltaY$ to $sideX$ or $sideY$. We switch between adding to $sideX$ and $sideY$ based on what is shorter. Then when we hit a wall, we can stop. In addition we can tell which side we hit(vertical or horizontal) based on whether we added to $sideX$ or $sideY$.
 
@@ -69,7 +72,7 @@ As I have said in the introduction, I was going to write more, but didn't. Mabye
 [Lodeblog]: https://lodev.org/cgtutor/raycasting.html
 [githublink]: https://github.com/Equinox134/C-Bitmap-Raycaster
 
-[wolfenstein3d]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/wolfenstein3d.png
-[raycastdemoimage]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/Simple_raycasting_with_fisheye_correction.gif
-[gridrayimage]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/grid%20intersection.png
-[varimage]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2022-11-14-Ray-Casting/variables.png
+[wolfenstein3d]: 
+[raycastdemoimage]: 
+[gridrayimage]: 
+[varimage]: 
