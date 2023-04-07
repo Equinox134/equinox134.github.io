@@ -67,7 +67,7 @@ For the algorithm to run in $O(NlogN)$ time, the size of the convex hull must be
 
 However, it can be shown that the size of the convex hull of $N$ circles is at most $2N-1$. Heres the proof:
 
-$What \space to \space Show$: $\|CH(S)\| \leq 2N-1$
+$What \space to \space Show$: $\lvert CH(S) \rvert \leq 2N-1$
 
 $Proof$: Let $u,v$ be 2 circles in $CH(S)$, and $S_0$ ~ $S_4$ subsets of $CH(S)$ so that $CH(S)$ can be written as $S_0,u,S_1,v,S_2,u,S_3,v,S_4$. First, suppose that the size of $S_1$ and $S_3$ are 0. Then, $t(u,v)$ must appear as an edge on $CH(S)$ twice, which makes no sense. Now, suppose that the size of $S_1$ is not 0. That means that $L(u,v)$ must intersect with $Hull(S)$ at some point $\psi$. However, the second appearance means that there is another intersection with $L(u,v)$ and $Hull(S)$ that isn't $\psi$, which is a contradiction. In other words, $u,\cdots,v,\cdots,u,\cdots,v$ is an impossible sequence in $CH(S)$.
 
