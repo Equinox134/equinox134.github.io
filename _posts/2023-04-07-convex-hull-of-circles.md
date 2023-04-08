@@ -336,7 +336,7 @@ GCPC 2011, Security Zone, [link][security]<br />
 [security]: https://www.acmicpc.net/problem/3970
 [craters]: https://www.acmicpc.net/problem/15086
 [rappaport]: https://www.sciencedirect.com/science/article/pii/092577219290015K
-[circlehull]: https://www.google.com/
+[circlehull]: https://www.acmicpc.net/problem/27957
 
 [maxhullexample]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2023-03-12-Convex-Hull-of-Circles/max%20hull%20example.png
 [dom1]: https://raw.githubusercontent.com/Equinox134/equinox134.github.io/master/assets/img/2023-03-12-Convex-Hull-of-Circles/dom1.png
