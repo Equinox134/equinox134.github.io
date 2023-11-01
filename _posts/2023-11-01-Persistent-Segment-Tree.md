@@ -183,9 +183,9 @@ int kth(int pre, int cur, int s, int e, int k){
 
 So this is a brief introduction on persistent segment trees. Once understood, they are pretty straightforward to use. I'll end this post with some practice problems. Some of them are in Korean.
 
-1. Egg: https://www.acmicpc.net/problem/11012
+1. Egg: [Problem Link](https://www.acmicpc.net/problem/11012)
 	* A problem to count the number of points in a certain range
-2. K-th Number: https://www.acmicpc.net/problem/7469
+2. K-th Number: [Problem Link](https://www.acmicpc.net/problem/7469)
 	* Self explanatory, find the k-th smallest number in a certain range
-3. XOR 쿼리: https://www.acmicpc.net/problem/13538
+3. XOR 쿼리: [Problem Link](https://www.acmicpc.net/problem/13538)
 	* Perform various queries using PST
