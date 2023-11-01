@@ -3,7 +3,7 @@ title: Shortest Path Algorithms
 author: Equinox134
 date: 2022-09-28
 categories: [Computer Science, Algorithm]
-tags: [Computer Science, Algorithms, Graph Algorithm, C++]
+tags: [Computer Science, Algorithm, Graph Algorithm, C++]
 math: true
 excerpt: Explenation of algorithms for finding the shortest path
 ---
