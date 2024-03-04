@@ -134,7 +134,7 @@ $What \space to \space Show$: A polygon is $y$-monotone if it has no split or me
 
 $Proof$: Suppose a polygon $P$ is not $y$-monotone. Then, there is a horizontal line $l$ that intersects $P$ in more than one connected component. Lets choose one $l$ so that the leftmost component is a segment and not a point.
 
-Let $p$ be the left endpoint of this segment, and $q$ the right endpoint. Now, starting from $q$ we're going to follow the boundary of $P$ so that the interior of $P$ is on the right (in other words, go up). At some point $r$, the boundary will intersect $l$ again. If $p \ne r$, then the highest vertex encountered while going from $q$ to $r$ must be a split vertex.
+Let $p$ be the left endpoint of this segment, and $q$ the right endpoint. Now, starting from $q$ we're going to follow the boundary of $P$ so that the interior of $P$ is on the left (in other words, go up). At some point $r$, the boundary will intersect $l$ again. If $p \ne r$, then the highest vertex encountered while going from $q$ to $r$ must be a split vertex.
 
 Otherwise, if $p = r$, we follow the boundary of $P$ starting from $q$, but this time in the opposite direction. Again, the boundary will intersect $l$ at some point $r'$. If $r' = p$, then $l$ only intersects $P$ twice, which contradicts the fact that $l$ intersects $P$ in more than one component. Therefor $r' \ne p$, meaning that the lowest vertex encountered while going from $q$ to $r'$ must be a merge vertex.
 
