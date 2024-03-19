@@ -135,6 +135,7 @@ Lets continue for when $u = s$ and $v \ne t$. Again, $d_{sv}$ is added in the fi
 The same can be done for when $u \ne s$ and $v = t$. In this case, instead of adding $z_v$, we have to subtract $z_u$. Also, the coefficient in the objective function is 0 in this case. This gives us the second and third constraint for the dual.
 
 $$d_{sv} + z_v \geq 1 \quad \forall (s,v) \in E, v \ne t$$
+
 $$d_{ut} - z_u \geq 0 \quad \forall (u,t) \in E, u \ne s$$
 
 The final case is when $u = s$ and $v = t$. In this case, the only thing added in the constraint is $d_{st}$, and since the coefficient in the objective function is 1, we get our final constraint for the dual.
@@ -167,6 +168,7 @@ $$d_{uv} = \begin{cases}
 0, & \text{otherwise}
 \end{cases}
 $$
+
 $$z_{v} = \begin{cases}
 1, & \text{if}\space v \in S \\
 0, & \text{otherwise}
@@ -199,7 +201,7 @@ The maximum fractional matching size in a graph $G = (V,E)$ is the solution to t
 	1. $\mathbf{x} \geq \mathbf{0}_E$
 	2. $\mathbf{A}_G \cdot \mathbf{x} \leq \mathbf{1}_V$
 
-Here, $\mathbf{x}$ is a vector of size $|E|$ where each element represents the weight of each edge in the matching. $\mathbf{1}_E$ is a vector of $|E|$ ones, so the objective is to maximize the size of the matching. $\mathbf{0}_E$ is a vector of $|E|$ zeros, so the first constraint is the sign constraint. $\mathbf{1}_V$ is a vector of $|V|$ ones, and $\mathbf{A}_G$ is the incidence matrix, which is a matrix where each row is a vertex and column is an edge, and if the edge and vertex are connected, that cell is 1, otherwise 0. So, the third constraint says that the sum of the weights near an edge is at most 1.
+Here, $\mathbf{x}$ is a vector of size $\|E\|$ where each element represents the weight of each edge in the matching. $\mathbf{1}_E$ is a vector of $\|E\|$ ones, so the objective is to maximize the size of the matching. $\mathbf{0}_E$ is a vector of $\|E\|$ zeros, so the first constraint is the sign constraint. $\mathbf{1}_V$ is a vector of $\|V\|$ ones, and $\mathbf{A}_G$ is the incidence matrix, which is a matrix where each row is a vertex and column is an edge, and if the edge and vertex are connected, that cell is 1, otherwise 0. So, the third constraint says that the sum of the weights near an edge is at most 1.
 
 Similarly, the minimum fractional vertex cover in a graph $G = (V,E)$ is the solution to the following LP.
 
@@ -208,7 +210,7 @@ Similarly, the minimum fractional vertex cover in a graph $G = (V,E)$ is the sol
 	1. $\mathbf{y} \geq \mathbf{0}_V$
 	2. $\mathbf{A}_G^\top \cdot \mathbf{y} \leq \mathbf{1}_E$
 
-Here, $\mathbf{y}$ is a vector of size $|V|$ in which each element represents the weight of the vertex in the fractional cover. The objective is to minimize the sum of the weights in the cover. The second line is the sign constraint, and the third line represents that the sum of the weights on an edge should be at most one.
+Here, $\mathbf{y}$ is a vector of size $\|V\|$ in which each element represents the weight of the vertex in the fractional cover. The objective is to minimize the sum of the weights in the cover. The second line is the sign constraint, and the third line represents that the sum of the weights on an edge should be at most one.
 
 Now, it is easy to see that the two LP's are duals of each other. Therefore, by the strong duality theorem, both have the same solution. This shows that that the largest fractional matching and the minimum fractional vertex cover is equal in any graph.
 
