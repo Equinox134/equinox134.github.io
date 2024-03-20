@@ -41,10 +41,10 @@ The **standard form** is the usual and most intuitive way to describe a linear p
 
 The same problem can be written using matrices:
 
-Find a vector $\mathbf{x}$ <\br>
-that maximizes $\mathbf{c^\top x}$ <\br>
-subject to $A\mathbf{x} \leq \mathbf{b}$  <\br>
-and $\mathbf{x} \geq 0$ <\br>
+Find a vector $\mathbf{x}$ <br/>
+that maximizes $\mathbf{c^\top x}$ <br/>
+subject to $A\mathbf{x} \leq \mathbf{b}$  <br/>
+and $\mathbf{x} \geq 0$ <br/>
 
 where $\mathbf{x}$ is a vector with $n$ variables that need to be determined, $\mathbf{c}$ and $\mathbf{b}$ are given vectors, and $\mathbf{A}$ is a given matrix. The function whose value we need to maximize($\mathbf{x} \mapsto \mathbf{c^\top x}$) is called the objective function.
 
