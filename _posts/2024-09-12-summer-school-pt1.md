@@ -120,7 +120,7 @@ Later in 1972, the Edmond-Karp algorithm was created, which has a strongly polyn
 
 We now move on to a more efficient algorithm. This algorithm uses something called a preflow, so lets define that first.
 
-Given a graph $G = (V,E)$ with directed edges, capacities $c : E \rightarrow \mathbb{R}_{>0}$ and $s, t \in V$, $f : E \rightarrow \mathbb{R}_{>0}$ is called a preflow if it holds the following conditions:
+Given a graph $G = (V,E)$ with directed edges, capacities $c : E \rightarrow \mathbb{R}_ {>0}$ and $s, t \in V$, $f : E \rightarrow \mathbb{R}_{>0}$ is called a preflow if it holds the following conditions:
 
 * $0 \leq f(e)\leq c(e) \quad ^\forall e \in E$
 * $e(v) = \sum_{e \in \delta^-(v)} f(e) - \sum_{e \in \delta^+(v)} f(e) \geq 0 \quad ^\forall v \in V/\{s,t\}$
