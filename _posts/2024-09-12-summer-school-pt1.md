@@ -1,3 +1,18 @@
+---
+title: Summer School Part 1 - Max Flow Min Cut Problem
+author: Equinox134
+date: 2024-08-01
+categories:
+  - Computer Science
+  - Algorithm
+tags:
+  - Computer
+  - Science
+  - Algorithm
+  - Graph
+math: true
+excerpt: From day 1 of KAIST Combinatorics and Algorithms Summer School
+---
 
 KAIST opened a 5 day summer school from July 22nd to 25th with the topics of combinatorics and algorithms. I got to know about this through a friend, and once I heard about it, there was no way I wasn't going. So I went, along with some of my friends, and it was a blast. I learnt so many new things with so much depth, from stuff I have heard of to things I have never known even existed. I also got to meet and talk with people who were experts on the field. Overall all the lectures were super fun and interesting, and once it was all over, all I wanted was for it to last a little longer.
 
