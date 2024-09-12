@@ -47,31 +47,31 @@ Given a graph $G = (V,E)$ with directed edges and capacities $c : E \rightarrow 
 
 Where $\delta^+(v)$ are the edges going out of $v$ and $\delta^-(v)$ are the edges going into $v$. We define the flow value of $f$ as the following.
 
-$$|f| = \sum_{e \in \delta^+(s)} f(e) - \sum_{e \in \delta^-(s)} f(e)$$
+$$\|f\| = \sum_{e \in \delta^+(s)} f(e) - \sum_{e \in \delta^-(s)} f(e)$$
 
-Finally, the Max flow problem is the problem where we want to find a flow $f$ so that $|f|$ is maximized.
+Finally, the Max flow problem is the problem where we want to find a flow $f$ so that $\|f\|$ is maximized.
 
 Lets now look at the min cut problem.
 
 Again we have the same graph and capacities from the max flow problem. We call a set of vertices $C \subset V$, where $s \in C$ and $t \notin C$ a cut (more specifically a $s,t$ - cut). Here, we define the cut value of $C$ as the following.
 
-$$|C| = \sum_{e \in \delta^+(c)} c(e)$$
+$$\|C\| = \sum_{e \in \delta^+(c)} c(e)$$
 
-This is the essentially the sum of edges removed in order to get rid of all paths from $s$ to $t$. Like the max flow problem, the min cut problem is the problem where we want to find a cut $C$ so that $|C|$ is minimized.
+This is the essentially the sum of edges removed in order to get rid of all paths from $s$ to $t$. Like the max flow problem, the min cut problem is the problem where we want to find a cut $C$ so that $\|C\|$ is minimized.
 
 Here, we can make a proposition:
 
-**Proposition**: Given any $X \subset V$, where $s \in X$ and $t \notin X$, then the flow value can be written as $|f| = \sum_{e \in \delta^+(X)} f(e) - \sum_{e \in \delta^-(X)} f(e)$
+**Proposition**: Given any $X \subset V$, where $s \in X$ and $t \notin X$, then the flow value can be written as $\|f\| = \sum_{e \in \delta^+(X)} f(e) - \sum_{e \in \delta^-(X)} f(e)$
 
-**Proof**: This is a simple double counting argument, since the our original definition of $|f|$ can be written as the following:
+**Proof**: This is a simple double counting argument, since the our original definition of $\|f\|$ can be written as the following:
 
-$$|f| = \sum_{v \in X} \left( \sum_{e \in \delta^+(v)} f(e) - \sum_{e \in \delta^-(v)} f(e) \right)$$
+$$\|f\| = \sum_{v \in X} \left( \sum_{e \in \delta^+(v)} f(e) - \sum_{e \in \delta^-(v)} f(e) \right)$$
 
 since the flow value is the amount of flow going out of $X$ minus the amount of flow coming into $X$. $\blacksquare$
 
-Notice how the righthand side of the equation given in the proposition will always be less than cut value $|X|$, since the flow is less than the capacity, and we subtract some stuff. This observation can lead us to the following.
+Notice how the righthand side of the equation given in the proposition will always be less than cut value $\|X\|$, since the flow is less than the capacity, and we subtract some stuff. This observation can lead us to the following.
 
-**Corollary**: Given any flow $f$ and cut $C$, $|f| \leq |C|$
+**Corollary**: Given any flow $f$ and cut $C$, $\|f\| \leq \|C\|$
 
 This corollary gives us the weak duality of the max flow problem and the min cut problem. In fact, if you know about strong duality, the two values are the always the same.
 
@@ -101,9 +101,9 @@ Now lets prove this algorithm works. To show that the resulting flow from the al
 
 **Proof**: Since the algorithm stops there is no more augmenting paths in $G(f)$. Let $X$ be the set of reachable vertices from $s$ in $G(f)$. Then, by our proposition from above, the following is true:
 
-$$|f| = \sum_{e \in \delta^+(X)} f(e) - \sum_{e \in \delta^-(X)} f(e)$$
+$$\|f\| = \sum_{e \in \delta^+(X)} f(e) - \sum_{e \in \delta^-(X)} f(e)$$
 
-Since there is no augmenting path in $G(f)$, there should only be edges going from $V / X$ to $X$. In other words, for all edges $e \in G$ going from $X$ to $V / X$, $f(e) = c(e)$, and for all edges $e \in G$ going from $V/X$ to $X$, $f(e) = 0$. Therefore $\sum_{e \in \delta^-(X)} f(e) = 0$, and $|f| = \sum_{e \in \delta^+(X)} f(e) = \sum_{e \in \delta^+(X)} c(e) = |X|$. In other words, once the algorithm stops, there exists a cut with the same value as the flow, making the flow maximum. $\blacksquare$
+Since there is no augmenting path in $G(f)$, there should only be edges going from $V / X$ to $X$. In other words, for all edges $e \in G$ going from $X$ to $V / X$, $f(e) = c(e)$, and for all edges $e \in G$ going from $V/X$ to $X$, $f(e) = 0$. Therefore $\sum_{e \in \delta^-(X)} f(e) = 0$, and $\|f\| = \sum_{e \in \delta^+(X)} f(e) = \sum_{e \in \delta^+(X)} c(e) = \|X\|$. In other words, once the algorithm stops, there exists a cut with the same value as the flow, making the flow maximum. $\blacksquare$
 
 How efficient is this algorithm? Not super good. Since there is no criteria on what augmenting path to choose, our algorithm might continuously choose a not-so-good augmenting path. The following image shows an example.
 
@@ -112,7 +112,7 @@ How efficient is this algorithm? Not super good. Since there is no criteria on w
 <figcaption align = "center"></figcaption>
 </figure>
 
-While the max flow is obviously $1$ in the graph above, our algorithm will keep on decreasing $M$ by $1$ in the residual graph until it's gone, taking a total of $O(M)$ operations. Therefore the running time of this algorithm in the worst case is $O(nm*\max{c})$, where $n = |V|$ and $m = |E|$ (which I'll use throughout this post). This is pseudo polynomial, which isn't super great.
+While the max flow is obviously $1$ in the graph above, our algorithm will keep on decreasing $M$ by $1$ in the residual graph until it's gone, taking a total of $O(M)$ operations. Therefore the running time of this algorithm in the worst case is $O(nm*\max{c})$, where $n = \|V\|$ and $m = \|E\|$ (which I'll use throughout this post). This is pseudo polynomial, which isn't super great.
 
 Later in 1972, the Edmond-Karp algorithm was created, which has a strongly polynomial time. The algorithm is similar to the algorithm, only we augment along the shortest path in $G(f)$. This small addition gives us the time complexity of $O(nm^2)$, independent of capacity. However, in 1971, a person called Dinic has already created a strongly polynomial time algorithm.
 
@@ -237,7 +237,7 @@ True or False: if I augment $f$ along the path that determines the width of $G(f
 
 Use the Max-flow network to answer the above question.
 
-**Question 4**: Given a bipartite graph $G = (A \cup B, E)$, prove that there is a matching of size $|A|$ *if and only if* given every subset $A^\prime \subset A$, $|N(A^\prime)| \geq |A^\prime|$, where $N(A^\prime)$ means the neighbors of $A^\prime$.
+**Question 4**: Given a bipartite graph $G = (A \cup B, E)$, prove that there is a matching of size $\|A\|$ *if and only if* given every subset $A^\prime \subset A$, $\|N(A^\prime)\| \geq \|A^\prime\|$, where $N(A^\prime)$ means the neighbors of $A^\prime$.
 
 (In fact this is just the well-known Hall's marriage theorem. Use Ford-Fulkerson max-flow-min-cut theorem to prove it).
 
@@ -275,9 +275,9 @@ If we choose the blue path, which determines the width, and push an additional $
 
 The edges between the second and third layer connect each resident with their clubs, and the edges between the third and fourth layer connect each resident with their political party. It is not hard to see that the condition in the problem can be satisfied when the max flow of the graph is $c$.
 
-**4**: ($\rightarrow$) Since there exists a matching size of $|A|$, each vertex has at least $1$ distinct neighbor, meaning for any subset $A^\prime$ the number of neighbors is at least the size of $A^\prime$, which satisfies the condition.
+**4**: ($\rightarrow$) Since there exists a matching size of $\|A\|$, each vertex has at least $1$ distinct neighbor, meaning for any subset $A^\prime$ the number of neighbors is at least the size of $A^\prime$, which satisfies the condition.
 
-($\leftarrow$) Lets try to find the min-cut value, by adding a vertex $s$ connected to all vertices in $A$, and $t$ connected to all vertices in $B$. Since $|N(A^\prime)| \geq |A^\prime|$ holds for every subset, the number of vertices in $B$ connected by $A^\prime$ is at least $|A^\prime|$, meaning for every subset, the min-cut should be $|A^\prime|$. This gives us the fact that the min-cut for the full graph should be $|A|$, and such a cut exists if we just cut all edges connecting $s$ and $A$. Therefore the max-flow value is also $|A|$, meaning there exists a matching of size $|A|$.
+($\leftarrow$) Lets try to find the min-cut value, by adding a vertex $s$ connected to all vertices in $A$, and $t$ connected to all vertices in $B$. Since $\|N(A^\prime)\| \geq \|A^\prime\|$ holds for every subset, the number of vertices in $B$ connected by $A^\prime$ is at least $\|A^\prime\|$, meaning for every subset, the min-cut should be $\|A^\prime\|$. This gives us the fact that the min-cut for the full graph should be $\|A\|$, and such a cut exists if we just cut all edges connecting $s$ and $A$. Therefore the max-flow value is also $\|A\|$, meaning there exists a matching of size $\|A\|$.
 
 **5**: I do not know the solution to this problem. However, I do know that the running time of the modified algorithm is $O(n^3)$. From what I have heard, this running time can be shown by showing that the total number of non-saturating pushes is reduced to $O(n)$ times per iteration, and that there are a total $O(n^2)$ iterations.
 
@@ -290,7 +290,7 @@ The edges between the second and third layer connect each resident with their cl
 5. $A/B$ and  $U/(A \cup B)$
 6. $B/A$ and  $U/(A \cup B)$
 
-It is easy to see that the edges of type 2 ~ 6 are contained on both $|X_1| + |X_2|$ and $|X_1 \cap X_2| + |X_1 \cup X_2|$. However, edges of type 1 are only contained in $|X_1| + |X_2|$. This leads to the inequality $|X_1| + |X_2| \geq |X_1 \cap X_2| + |X_1 \cup X_2|$. However, since $X_1$ and $X_2$ are both min-cuts, the value can't be smaller, meaning they are equal. Therefore both $X_1 \cap X_2$ and $X_1 \cup X_2$ are also min-cuts.
+It is easy to see that the edges of type 2 ~ 6 are contained on both $\|X_1\| + \|X_2\|$ and $\|X_1 \cap X_2\| + \|X_1 \cup X_2\|$. However, edges of type 1 are only contained in $\|X_1\| + \|X_2\|$. This leads to the inequality $\|X_1\| + \|X_2\| \geq \|X_1 \cap X_2\| + \|X_1 \cup X_2\|$. However, since $X_1$ and $X_2$ are both min-cuts, the value can't be smaller, meaning they are equal. Therefore both $X_1 \cap X_2$ and $X_1 \cup X_2$ are also min-cuts.
 
 ## See Also (WIP)
 
