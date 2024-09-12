@@ -40,7 +40,7 @@ This post will be looking at the max flow - min cut problem. We start by definin
 
 We start by defining the max flow and min cut problems, starting with max flow.
 
-Given a graph $G = (V,E)$ with directed edges and capacities $c : E \rightarrow \mathbb{R}_{>0}$, and two terminal vertices $s, t \in V$, we say $f : E \rightarrow \mathbb{R}_{>0}$ is a flow if $f$ holds the following conditions.
+Given a graph $G = (V,E)$ with directed edges and capacities $c : E \rightarrow \mathbb{R}_ {>0}$, and two terminal vertices $s, t \in V$, we say $f : E \rightarrow \mathbb{R}_{>0}$ is a flow if $f$ holds the following conditions.
 
 1. $0 \leq f(e) \leq c(e) \quad ^\forall e \in E$
 2. $\sum_{\delta^+(v)} f(e) = \sum_{\delta^-(v)} f(e) \quad ^\forall v \in V \\ \{s,t\}$
