@@ -46,12 +46,34 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+
+        # --- Diagnose / Sanitize to avoid symlink & hardlink rejection ---
+      - name: Inspect build folder (optional)
+        run: |
+          BUILD_DIR="_site${{ steps.pages.outputs.base_path }}"
+          echo "BUILD_DIR=$BUILD_DIR"
+          du -sh "$BUILD_DIR" || true
+          echo "== symlinks =="; find "$BUILD_DIR" -type l -printf '%p -> %l\n' || true
+          echo "== hardlinks =="; find "$BUILD_DIR" -type f -links +1 -printf '%n %p\n' || true
+
+      - name: Sanitize Pages artifact (dereference links)
+        run: |
+          SRC="_site${{ steps.pages.outputs.base_path }}"
+          DEST="_site_pages"
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          rsync -aL --safe-links "$SRC"/ "$DEST"/
+          # verify no links remain
+          test -z "$(find "$DEST" -type l)" || (echo "Symlinks still present" && exit 1)
+          test -z "$(find "$DEST" -type f -links +1)" || (echo "Hardlinks still present" && exit 1)
+          du -sh "$DEST" || true
+        
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: "_site${{ steps.pages.outputs.base_path }}"
+          path: _site_pages
 
   # Deployment job
   deploy:
