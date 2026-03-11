@@ -60,7 +60,7 @@ On C, the IEEE-754 standard represents a floating-point number $x$ in binary lik
 | number of bits    | 1        | 11             | 52                                                   |
 | example (-13.625) | 1        | 10000000010    | 1011010000000000000000000000000000000000000000000000 |
 
-Note that $-13.625 = -1.101101_2 \times 2^3$, and that the exponent is shifted by 1023(=$e_{\text{max}}$) when being stored.
+Note that $-13.625 = -1.101101 \times 2^3$ in binary, and that the exponent is shifted by 1023(=$e_{\text{max}}$) when being stored.
 
 ### The Basic Idea
 
