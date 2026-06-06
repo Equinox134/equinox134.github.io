@@ -8,6 +8,7 @@ tags:
   - Computer
   - Science
 math: true
+mermaid: true
 excerpt: Some notes on reductions of NP problems
 ---
 
