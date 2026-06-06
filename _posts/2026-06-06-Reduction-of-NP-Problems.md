@@ -151,7 +151,9 @@ proof:
 Let $\Phi$ be an instance of 3SAT.
 
 For each literal $x$ appearing more than twice in $\Phi$, replace each appearance of $x$ by a new literal $x_1, x_2, \cdots, x_k$. Then add the clause
+
 $$(\overline{x}_1 \lor x_2) \land (\overline{x}_2 \lor x_3) \cdots (\overline{x}_k \land x_1)$$
+
 One can verify that the above clause is satisfied only when all $x_1, x_2, \cdots, x_k$ have the same value.
 
 Repeat this process until no literal appears in $\Phi$ more than twice. Now the problem is an instance of Constrained 3SAT, and one can see that the original instance of 3SAT is satisfiable if and only if the instance of Constrained 3SAT is satisfiable.
@@ -267,8 +269,10 @@ Therefore we can reduce every instance of Hamiltonian Cycle with Paired Edges to
 
 proof:
 We will reduce from Hamiltonian Cycle. Given a graph $G = (V,E)$, let $H = (V,E^\prime)$ be the complete graph such that for each $e \in E^\prime$
+
 $$c(e) = \begin{cases}
 1 \quad &e \in E \\
 2 \quad &e \notin E
 \end{cases}$$
+
 Then there is a shortest tour of length $n$ in $H$ if and only $G$ has a Hamiltonian cycle. Therefore Hamiltonian Cycle reduces to TSP.
