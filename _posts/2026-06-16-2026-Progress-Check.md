@@ -149,6 +149,6 @@ Honestly if I just take like 5~6 courses that would be the best solution, but fo
 
 History repeats itself.
 
-I'm fucked up.
+I'm fucked.
 
 Cheers.
