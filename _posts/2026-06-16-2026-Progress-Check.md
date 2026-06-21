@@ -152,3 +152,8 @@ History repeats itself.
 I'm fucked.
 
 Cheers.
+
+
+Update (2026/06/21):
+
+All scores have been uploaded and I actually got a way better GPA than I had initially anticipated. So that gives me some courage to do better next semester.
