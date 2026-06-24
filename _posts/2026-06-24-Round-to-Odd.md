@@ -198,15 +198,18 @@ The high-level view of the algorithm to generate the polynomial is as follows:
 More in-depth of each step:
 
 Computing the round-to-odd result from a real value:
+
 find the correctly rounded result $y_{ro}$ for input $x$. Compute each $y = f(x)$ using an oracle like MPFR, then obtain the rounding components $(s, v^-, rb, sticky)$, and use them to compute $y_{ro}$
 
 Deducing the odd interval of an input:
+
 We have to find intervals in $\mathbb{H}$ such that producing any value in that interval rounds to $y_{ro}$, which is called the odd interval. If $y_{ro}$ is even, then it is a singleton. Else, all values in $\mathbb{H}$ strictly greater than the preceding value of $y_{ro}$ and less the succeeding forms the odd interval.
 
 Piecewise polynomial generation using the odd intervals:
 Create a piecewise polynomial using LP
 
 Implementation of the polynomial approximation for $\mathbb{T}_k$:
+
 Given $x$, check if it's odd interval is a singleton, if so use a table look up or function-specific properties. Otherwise perform range reduction, use Horner's method for polynomial evaluation to compute round-to-odd result in $\mathbb{T}_{n+2}$, and round that result to $\mathbb{T}_k$.
 
 ### Handling Singletons
@@ -217,27 +220,27 @@ This is done by using mathematical properties of functions. For example, $e^x$, 
 
 ## Proof of Main Theorem
 
-**Lemma 1** The round-to-odd result $v_{ro}$ in $\mathbb{T}_{n+2}$ preserves the sign of $v_\mathbb{R}$
+**Lemma 1** The round-to-odd result $v_{ro}$ in $\mathbb{T}\_{n+2}$ preserves the sign of $v_\mathbb{R}$
 
 Pf) The only value that rounds to 0 is 0
 
-**Lemma 2** Let $v_{ro} = RN_{\mathbb{T}_{n+2},ro}(v_\mathbb{R})$. The first $(n+1)$-bits of $v_{ro}$ and $v_\mathbb{R}$ are identical.
+**Lemma 2** Let $v_{ro} = RN_{\mathbb{T}\_{n+2},ro}(v_\mathbb{R})$. The first $(n+1)$-bits of $v_{ro}$ and $v_\mathbb{R}$ are identical.
 
-Pf) $v_{ro}$ is created using rounding components $(s_{v_{ro}}, v^-_{v_{ro}}, rb_{v_{ro}}, sticky_{v_{ro}})$. The round-to-odd mode preserves the sign, so we assume $v_\mathbb{R}$ is positive. Also $v^-_{v_{ro}}$ is a truncated value or $v_\mathbb{R}$, so all the $(n+2)$-bits of $v^-_{v_{ro}}$ and $v_\mathbb{R}$ are identical. After rounding $v_{ro}$ is either $v^-_{v_{ro}}$ or the successor of $v^-_{v_{ro}}$. We now show that the $(n+1)$-bits of $v_{ro}$ and $v_\mathbb{R}$ are identical.
+Pf) $v_{ro}$ is created using rounding components $(s_{v_{ro}}, v^-\_{v_{ro}}, rb_{v_{ro}}, sticky_{v_{ro}})$. The round-to-odd mode preserves the sign, so we assume $v_\mathbb{R}$ is positive. Also $v^-_{v_{ro}}$ is a truncated value or $v_\mathbb{R}$, so all the $(n+2)$-bits of $v^-\_{v_{ro}}$ and $v_\mathbb{R}$ are identical. After rounding $v_{ro}$ is either $v^-_{v_{ro}}$ or the successor of $v^-\_{v_{ro}}$. We now show that the $(n+1)$-bits of $v_{ro}$ and $v_\mathbb{R}$ are identical.
 
-If $v^-_{v_{ro}}$ is odd, then $v_{ro} = v^-_{v_{ro}}$. Therefore all $(n+2)$-bits of $v_{ro}$ and $v_\mathbb{R}$ are identical. Else $v^-_{v_{ro}}$ is even. So the last bit of $v^-_{v_{ro}}$ is 0. (1) if $rb_{v_{ro}} = 0$ and $sticky_{v_{ro}} = 0$ then $v_{ro} = v^-_{v_{ro}}$, so the lemma holds. (2) if $rb_{v_{ro}} \ne 0$ and $sticky_{v_{ro}} \ne 0$ then $v_{ro}$ is equal to the successor of $v^-_{v_{ro}}$. The only bit that changes between $v^-_{v_{ro}}$ and the successor is the $(n+2)^{th}$-bit. So the first $(n+1)$-bits are the same.
+If $v^-_{v_{ro}}$ is odd, then $v_{ro} = v^-_{v_{ro}}$. Therefore all $(n+2)$-bits of $v_{ro}$ and $v_\mathbb{R}$ are identical. Else $v^-\_{v_{ro}}$ is even. So the last bit of $v^-\_{v_{ro}}$ is 0. (1) if $rb_{v_{ro}} = 0$ and $sticky_{v_{ro}} = 0$ then $v_{ro} = v^-\_{v_{ro}}$, so the lemma holds. (2) if $rb_{v_{ro}} \ne 0$ and $sticky_{v_{ro}} \ne 0$ then $v_{ro}$ is equal to the successor of $v^-\_{v_{ro}}$. The only bit that changes between $v^-\_{v_{ro}}$ and the successor is the $(n+2)^{th}$-bit. So the first $(n+1)$-bits are the same.
 
 **Lemma 3** The $(n+2)^{th}$-bit of $v_{ro}$ is equal to the bitwise OR of all the bits of $v_\mathbb{R}$ starting from the $(n+2)^{th}$-bit
 
-Pf) Use similar strategy to lemma 2. Intuitively the lemma states that the last bit of $v_{ro}$ is 0 if and only if all bits starting from the $(n+2)^{th}$-bit of $v_\mathbb{R}$ is 0. Again assume $v_\mathbb{R}$ positive, and the rounding components are $(s_{v_{ro}}, v^-_{v_{ro}}, rb_{v_{ro}}, sticky_{v_{ro}})$. Again $v_{ro}$ is either $v^-_{v_{ro}}$ or it's successor.
+Pf) Use similar strategy to lemma 2. Intuitively the lemma states that the last bit of $v_{ro}$ is 0 if and only if all bits starting from the $(n+2)^{th}$-bit of $v_\mathbb{R}$ is 0. Again assume $v_\mathbb{R}$ positive, and the rounding components are $(s_{v_{ro}}, v^-\_{v_{ro}}, rb_{v_{ro}}, sticky_{v_{ro}})$. Again $v_{ro}$ is either $v^-\_{v_{ro}}$ or it's successor.
 
-If $v^-_{v_{ro}}$ is odd, then $v_{ro} = v^-_{v_{ro}}$. Then the $(n+2)^{th}$-bit of $v^-_{v_{ro}}$ is 1. Since $v^-_{v_{ro}}$ is a truncated $v_\mathbb{R}$ the $(n+2)^{th}$-bit of $v_\mathbb{R}$ is 1. So the bitwise OR of bits of $v_\mathbb{R}$ starting from the $(n+2)^{th}$-bit is 1, which is equal to the $(n+2)^{th}$-bit of $v_{ro}$.
+If $v^-\_{v_{ro}}$ is odd, then $v_{ro} = v^-\_{v_{ro}}$. Then the $(n+2)^{th}$-bit of $v^-\_{v_{ro}}$ is 1. Since $v^-\_{v_{ro}}$ is a truncated $v_\mathbb{R}$ the $(n+2)^{th}$-bit of $v_\mathbb{R}$ is 1. So the bitwise OR of bits of $v_\mathbb{R}$ starting from the $(n+2)^{th}$-bit is 1, which is equal to the $(n+2)^{th}$-bit of $v_{ro}$.
 
-Else $v^-_{v_{ro}}$ is even. There are two subcases. The first is when $rb_{v_{ro}} = 0$ and $sticky_{v_{ro}} = 0$, so $v_{ro} = v^-_{v_{ro}}$. The $(n+2)^{th}$-bit of $v^-_{v_{ro}}$ is 0. So is the $(n+2)^{th}$-bit of $v_\mathbb{R}$. By definition, $rb_{v_{ro}}$ is the value of the $(n+3)^{th}$-bit and $sticky_{v_{ro}}$ is the bitwise OR of all bits starting from the $(n+4)^{th}$-bit. So the bitwise OR of all bits starting from the $(n+2)^{th}$-bit is 0, which is the $(n+2)^{th}$ bit of $v_{ro}$.
+Else $v^-\_{v_{ro}}$ is even. There are two subcases. The first is when $rb_{v_{ro}} = 0$ and $sticky_{v_{ro}} = 0$, so $v_{ro} = v^-\_{v_{ro}}$. The $(n+2)^{th}$-bit of $v^-\_{v_{ro}}$ is 0. So is the $(n+2)^{th}$-bit of $v_\mathbb{R}$. By definition, $rb_{v_{ro}}$ is the value of the $(n+3)^{th}$-bit and $sticky_{v_{ro}}$ is the bitwise OR of all bits starting from the $(n+4)^{th}$-bit. So the bitwise OR of all bits starting from the $(n+2)^{th}$-bit is 0, which is the $(n+2)^{th}$ bit of $v_{ro}$.
 
-In the next subcase $rb_{v_{ro}} \ne 0$ and $sticky_{v_{ro}} \ne 0$. In this case $v_{ro}$ is equal to the successor of $v^-_{v_{ro}}$ which is odd. So the $(n+2)^{th}$-bit of $v_{ro}$ is 1. By similar reasons as above, some bit after the $(n+2)^{th}$-bit in $v_\mathbb{R}$ is 1. So the lemma holds.
+In the next subcase $rb_{v_{ro}} \ne 0$ and $sticky_{v_{ro}} \ne 0$. In this case $v_{ro}$ is equal to the successor of $v^-\_{v_{ro}}$ which is odd. So the $(n+2)^{th}$-bit of $v_{ro}$ is 1. By similar reasons as above, some bit after the $(n+2)^{th}$-bit in $v_\mathbb{R}$ is 1. So the lemma holds.
 
-**Lemma 4** Let $(s_1, v_1^-, rb_1, sticky_1)$ and $(s_2, v_2^-, rb_2, sticky_2)$ be the rounding components for two real values $v_1$ and $v_2$ in rounding them to a FP representation $\mathbb{T}_n$. If $s_1 = s_2, v_1^- = v_2^-, rb_1 = rb_2$ and $sticky_1 = sticky_2$, then $RN_{\mathbb{T},rm} (v_1) = RN_{\mathbb{T},rm}(v_2)$ for any rounding mode $rm$.
+**Lemma 4** Let $(s_1, v_1^-, rb_1, sticky_1)$ and $(s_2, v_2^-, rb_2, sticky_2)$ be the rounding components for two real values $v_1$ and $v_2$ in rounding them to a FP representation $\mathbb{T}\_n$. If $s_1 = s_2, v_1^- = v_2^-, rb_1 = rb_2$ and $sticky_1 = sticky_2$, then $RN_{\mathbb{T},rm} (v_1) = RN_{\mathbb{T},rm}(v_2)$ for any rounding mode $rm$.
 
 Pf) Follows directly from the definition of rounding components.
 
@@ -247,11 +250,11 @@ Here's a sketch of the proof.
 
 We prove the following:
 
-**Theorem 2** Given a real number $v_\mathbb{R}$, representations $\mathbb{T}_k$ and $\mathbb{T}_{n+2}$ with same number of exponent bits that satisfy $\lvert E \rvert + 1 < k \leq n$, and a rounding mode $rm \in \{rn, ra, rz, ru, rd\}$, then $RN_{\mathbb{T}_k,rm} (v_\mathbb{R}) = RN_{\mathbb{T}_k,rm} (RN_{\mathbb{T}_{n+2},ro}(v_\mathbb{R}))$.
+**Theorem 2** Given a real number $v_\mathbb{R}$, representations $\mathbb{T}\_k$ and $\mathbb{T}\_{n+2}$ with same number of exponent bits that satisfy $\lvert E \rvert + 1 < k \leq n$, and a rounding mode $rm \in \{rn, ra, rz, ru, rd\}$, then $RN_{\mathbb{T}\_k,rm} (v_\mathbb{R}) = RN_{\mathbb{T}\_k,rm} (RN_{\mathbb{T}\_{n+2},ro}(v_\mathbb{R}))$.
 
-Let $v_{ro} = RN_{\mathbb{T}_{n+2},ro}(v_\mathbb{R})$. By lemma 4, we just have to check if the rounding components for $v_\mathbb{R}$ and $v_{ro}$ are the same. Again, round-to-odd preserves sign, so we assume positive.
+Let $v_{ro} = RN_{\mathbb{T}\_{n+2},ro}(v_\mathbb{R})$. By lemma 4, we just have to check if the rounding components for $v_\mathbb{R}$ and $v_{ro}$ are the same. Again, round-to-odd preserves sign, so we assume positive.
 
-Let $(s_1, v_1^-, rb_1, sticky_1)$ and $(s_2, v_2^-, rb_2, sticky_2)$ be the rounding components for $v_\mathbb{R}$ and $v_{ro}$ respectively in $\mathbb{T}_k$. Let the representation of $v_\mathbb{R}$ in extended infinite precision representation $B_{v_\mathbb{R}}$ be
+Let $(s_1, v_1^-, rb_1, sticky_1)$ and $(s_2, v_2^-, rb_2, sticky_2)$ be the rounding components for $v_\mathbb{R}$ and $v_{ro}$ respectively in $\mathbb{T}\_k$. Let the representation of $v_\mathbb{R}$ in extended infinite precision representation $B_{v_\mathbb{R}}$ be
 
 $$B_{v_\mathbb{R}} = b_1 b_2 \cdots b_{k-1} b_k b_{k+1} \cdots b_n b_{n+1} b_{n+2} b_{n+3} \cdots$$
 
