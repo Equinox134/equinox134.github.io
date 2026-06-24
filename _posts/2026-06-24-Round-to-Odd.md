@@ -175,13 +175,13 @@ s \times v^+ &otherwise
 
 where $v_\mathbb{R}$ is a real value, $s$ is the sign bit, $rb$ is the rounding bit, and $sticky$ is the sticky bit. Also, $v^-$ and $v^+$ are the largest and smallest floating point numbers such that $v^- \leq v_\mathbb{R} < v^+$.
 
-The goal is to find a polynomial approximation $A_\mathbb{H}$ such that $RN_{\mathbb{T}_k,rm} (A_\mathbb{H}(x)) = RN_{\mathbb{T}_k,rm} (f(x))$, where $A_\mathbb{H}$ is implemented in representation $\mathbb{H}$. The main insight is that if the polynomial approximation produces correct results in $\mathbb{T}_{n+2}$< then it produces correct results for any representation $\mathbb{T}_k$ for any rounding mode.
+The goal is to find a polynomial approximation $A_\mathbb{H}$ such that $RN_{\mathbb{T}\_k,rm} (A_\mathbb{H}(x)) = RN_{\mathbb{T}\_k,rm} (f(x))$, where $A_\mathbb{H}$ is implemented in representation $\mathbb{H}$. The main insight is that if the polynomial approximation produces correct results in $\mathbb{T}_{n+2}$ then it produces correct results for any representation $\mathbb{T}_k$ for any rounding mode.
 
 More specifically:
 
-**Theorem 1** Let $v_\mathbb{R} = f(x)$ be a real values result of an elementary function and $v_{ro} = RN_{\mathbb{T}_{n+2},ro}(v_\mathbb{R})$. Let $v$ be a value in the odd interval of $v_{ro}$. Consider a rounding mode $rm \in \{rn, ra, rz, ru, rd\}$. Then,
+**Theorem 1** Let $v_\mathbb{R} = f(x)$ be a real values result of an elementary function and $v_{ro} = RN_{\mathbb{T}\_{n+2},ro}(v_\mathbb{R})$. Let $v$ be a value in the odd interval of $v_{ro}$. Consider a rounding mode $rm \in \{rn, ra, rz, ru, rd\}$. Then,
 
-$$RN_{\mathbb{T}_k,rm}(v) = RN_{\mathbb{T}_k,rm}(v_\mathbb{R})$$
+$$RN_{\mathbb{T}\_k,rm}(v) = RN_{\mathbb{T}_k,rm}(v_\mathbb{R})$$
 
 proof is provided later.
 
