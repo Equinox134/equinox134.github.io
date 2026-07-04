@@ -28,11 +28,11 @@ We are only interested in the amount of communication between Alice and Bob and 
 
 The following is a formal definition of a protocol.
 
-**Definition 1.1** *A protocol $\mathcal{P}$ over domain $X \times Y$ with range $Z$ is a binary tree where each node $v$ is labeled either by a function $a_v : X \rightarrow \{0,1\}$ or by a function $b_v : Y \rightarrow \{0,1\}$, and each leaf is labeled with an element $z \in Z$.*
+**Definition 1.1** *A protocol $\mathcal{P}$ over domain $X \times Y$ with range $Z$ is a binary tree where each node $v$ is labeled either by a function $a_v : X \rightarrow \lbrace0,1\rbrace$ or by a function $b_v : Y \rightarrow \lbrace0,1\rbrace$, and each leaf is labeled with an element $z \in Z$.*
 
 *The* value of the protocol $\mathcal{P}$ *on input $(x,y)$ is the label of the leaf reached by starting from the root, and walking on the tree. At each internal node $v$ labeled by $a_v$ walking left if $a_v(x) = 0$ and right if $a_v(x) = 1$, and at each internal node labeled by $b_v$ walking left if $b_v(y) = 0$ and right if $b_v(y) = 1$. The* cost of the protocol $\mathcal{P}$ on input $(x,y)$ *is the length of the path taken on input $(x,y)$. The* cost of the protocol $\mathcal{P}$ *is the height of the tree*.
 
-I feel like the definition is quite intuitive. The following is a protocol tree for some function $f$ defined on $X \times Y$ for $X = \{x,x^\prime,x^{\prime\prime},x^{\prime\prime\prime}\}$ and $Y = \{y,y^\prime,y^{\prime\prime},y^{\prime\prime\prime}\}$. 
+I feel like the definition is quite intuitive. The following is a protocol tree for some function $f$ defined on $X \times Y$ for $X = \lbrace x,x^\prime,x^{\prime\prime},x^{\prime\prime\prime}\rbrace$ and $Y = \lbrace y,y^\prime,y^{\prime\prime},y^{\prime\prime\prime}\rbrace$. 
 
 ```mermaid
 flowchart TD  
@@ -111,7 +111,7 @@ $$D(f) = d \geq \log \lvert \text{Range}(f) \rvert$$
 
 $\blacksquare$
 
-For the most case, we are going to look at Boolean functions $f : X \times Y \rightarrow \{0,1\}$. The bound above only gives $D(f) \geq 1$, which is useless. From this point on, unless explicitly stated, $Z = \{0,1\}$.
+For the most case, we are going to look at Boolean functions $f : X \times Y \rightarrow \lbrace0,1\rbrace$. The bound above only gives $D(f) \geq 1$, which is useless. From this point on, unless explicitly stated, $Z = \lbrace0,1\rbrace$.
 
 ## Rectangles
 
@@ -121,7 +121,7 @@ Proving lower bounds on communication complexity comes from a combinatorial view
 
 It immediately follows that
 
-**Proposition 1.11** *If $L$ is the set of leaves of a protocol $\mathcal{P}$, then $\{R_\ell\}_{\ell \in L}$ is a partition of $X \times Y$*.
+**Proposition 1.11** *If $L$ is the set of leaves of a protocol $\mathcal{P}$, then $\lbrace R_\ell\rbrace_{\ell \in L}$ is a partition of $X \times Y$*.
 
 **Definition 1.12** *A* combinatorial rectangle *(in short, a rectangle) in $X \times Y$ is a subset $R \subseteq X \times Y$ such that $R = A \times B$ for some $A \subseteq X$ and $B \subseteq Y$*.
 
@@ -135,11 +135,11 @@ $$(x_1, y_1) \in R \space and \space (x_2, y_2) \in R \Rightarrow (x_1, y_2) \in
 
 $(\Leftarrow)$ Define the sets
 
-$$A = \{x \space\vert\space \text{exists } y \text{ such that } (x,y) \in R\}$$
+$$A = \lbrace x \space\vert\space \text{exists } y \text{ such that } (x,y) \in R\rbrace$$
 
 and
 
-$$B = \{y \space\vert\space \text{exists } x \text{ such that } (x,y) \in R\}$$
+$$B = \lbrace y \space\vert\space \text{exists } x \text{ such that } (x,y) \in R\rbrace$$
 
 We claim $R = A \times B$. $R \subseteq A \times B$ is clear from the definition of $A$ and $B$. Consider $(x,y) \in A \times B$. Since $x \in A$, there exists $y^\prime$ such that $(x, y^\prime) \in R$. Similarly there exists $x^\prime$ such that $(x^\prime, y) \in R$. Using the assumption this implies $(x,y) \in R$. $\blacksquare$
 
@@ -182,7 +182,7 @@ We now look at some techniques to do this.
 
 The first technique is called the fooling set technique. It says that if we have a large set of input pairs such that no two of them can be in a single monochromatic rectangle, this implies that the number of monochromatic rectangles is large. We use the idea of Lemma 1.16 and Proposition 1.13, which together imply that if two input pairs $(x_1, y_1)$ and $(x_2, y_2)$ are in the same monochromatic rectangle induced by a protocol $\mathcal{P}$, then the value of $f$ on both of them is some $z$, and that the two input pairs $(x_1, y_2)$ and $(x_2, y_1)$ must also be in the same monochromatic rectangle. In other words, if $f$ has a different value on either $(x_1, y_2)$ or $(x_2, y_1)$, then $(x_1, y_1)$ and $(x_2, y_2)$ cannot be in the same rectangle.
 
-**Definition 1.19** *Let $f : X \times Y \rightarrow \{0,1\}$. A set $S \subset X \times Y$ is called a* fooling set *(for $f$) if there exists a value $z \in \{0,1\}$ such that*
+**Definition 1.19** *Let $f : X \times Y \rightarrow \lbrace0,1\rbrace$. A set $S \subset X \times Y$ is called a* fooling set *(for $f$) if there exists a value $z \in \lbrace0,1\rbrace$ such that*
 
 * *For every $(x,y) \in S$, $f(x,y) = z$*
 * *For every two distinct pairs $(x_1, y_1)$ and $(x_2, y_2)$ in $S$, either $f(x_1, y_2) \ne z$ or $f(x_2, y_1) \ne z$*
@@ -193,11 +193,11 @@ The first technique is called the fooling set technique. It says that if we have
 
 While a simple strategy, it allows us to give tight bounds to some functions.
 
-**Example 1.21** Alice and Bob each hold an $n$-bit string, $x, y \in \{0,1\}^n$. The equality function, $\text{EQ}(x, y)$ is defined to be 1 if $x = y$ and 0 otherwise. A fooling set of size $2^n$ is
+**Example 1.21** Alice and Bob each hold an $n$-bit string, $x, y \in \lbrace0,1\rbrace^n$. The equality function, $\text{EQ}(x, y)$ is defined to be 1 if $x = y$ and 0 otherwise. A fooling set of size $2^n$ is
 
-$$S = \{(\alpha, \alpha) \space \vert \space \alpha \in \{0,1\}^n\}$$
+$$S = \lbrace(\alpha, \alpha) \space \vert \space \alpha \in \lbrace0,1\rbrace^n\rbrace$$
 
-(because for every $\alpha$, $\text{EQ}(\alpha, \alpha) = 1$, whereas for every $\alpha \ne \beta$, $\text{EQ}(\alpha, \beta) = 0$). It follows that $D(\text{EQ}) \geq n$. By also counting 0-rectangles, we conclude $D(\text{EQ}) \geq n+1$. Finally, recall that $D(f) \leq n+1$ for every function $f : \{0,1\}^n \times \{0,1\}^n \rightarrow \{0,1\}$ (by Proposition 1.3). Therefore $D(\text{EQ}) = n+1$.
+(because for every $\alpha$, $\text{EQ}(\alpha, \alpha) = 1$, whereas for every $\alpha \ne \beta$, $\text{EQ}(\alpha, \beta) = 0$). It follows that $D(\text{EQ}) \geq n$. By also counting 0-rectangles, we conclude $D(\text{EQ}) \geq n+1$. Finally, recall that $D(f) \leq n+1$ for every function $f : \lbrace0,1\rbrace^n \times \lbrace0,1\rbrace^n \rightarrow \{0,1\}$ (by Proposition 1.3). Therefore $D(\text{EQ}) = n+1$.
 
 The fooling set technique is a special case of a more general technique for proving lower bounds on the communication complexity. The idea is to prove that the "size" of every monochromatic rectangle is small, implying that many monochromatic rectangles are needed in any partition of $X \times Y$. Here, the "size" measure can be chosen to our advantage.
 
