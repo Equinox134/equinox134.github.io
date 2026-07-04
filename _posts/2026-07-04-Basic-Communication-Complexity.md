@@ -35,36 +35,36 @@ The following is a formal definition of a protocol.
 I feel like the definition is quite intuitive. The following is a protocol tree for some function $f$ defined on $X \times Y$ for $X = \lbrace x,x^\prime,x^{\prime\prime},x^{\prime\prime\prime}\rbrace$ and $Y = \lbrace y,y^\prime,y^{\prime\prime},y^{\prime\prime\prime}\rbrace$. 
 
 ```mermaid
-flowchart TD  
-A["a₁(x) = 0<br/>a₁(x′) = 0<br/>a₁(x′′) = 1<br/>a₁(x′′′) = 1"]  
-  
-B["b₂(y) = 0<br/>b₂(y′) = 0<br/>b₂(y′′) = 0<br/>b₂(y′′′) = 1"]  
-C["b₃(y) = 1<br/>b₃(y′) = 0<br/>b₃(y′′) = 0<br/>b₃(y′′′) = 0"]  
-  
-D["a₄(x) = 0<br/>a₄(x′) = 0<br/>a₄(x′′) = 0<br/>a₄(x′′′) = 1"]  
-  
-L0((0))  
-L1((1))  
-R0((0))  
-D1((1))  
-D0((0))  
-  
-A --- B  
-A --- C  
-  
-B --- L0  
-B --- L1  
-  
-C --- D  
-C --- R0  
-  
-D --- D1  
-D --- D0  
-  
-classDef box fill:#000,stroke:#fff,stroke-width:2px,color:#fff;  
-classDef leaf fill:#000,stroke:#fff,stroke-width:2px,color:#fff;  
-  
-class A,B,C,D box;  
+flowchart TD
+A["a₁(x) = 0<br/>a₁(x′) = 0<br/>a₁(x′′) = 1<br/>a₁(x′′′) = 1"]
+
+B["b₂(y) = 0<br/>b₂(y′) = 0<br/>b₂(y′′) = 0<br/>b₂(y′′′) = 1"]
+C["b₃(y) = 1<br/>b₃(y′) = 0<br/>b₃(y′′) = 0<br/>b₃(y′′′) = 0"]
+
+D["a₄(x) = 0<br/>a₄(x′) = 0<br/>a₄(x′′) = 0<br/>a₄(x′′′) = 1"]
+
+L0((0))
+L1((1))
+R0((0))
+D1((1))
+D0((0))
+
+A --- B
+A --- C
+
+B --- L0
+B --- L1
+
+C --- D
+C --- R0
+
+D --- D1
+D --- D0
+
+classDef box fill:#fff,stroke:#111,stroke-width:2px,color:#000;
+classDef leaf fill:#fff,stroke:#111,stroke-width:2px,color:#000;
+
+class A,B,C,D box;
 class L0,L1,R0,D1,D0 leaf;
 ```
 
