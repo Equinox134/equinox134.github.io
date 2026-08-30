@@ -12,7 +12,7 @@ math: true
 mermaid: true
 excerpt: An analysis on the error of glibc's exp function
 ---
-# Worst-Case ULP Error Bound for `exp` (binary64, $N = 128$)
+# Worst-Case ULP Error Bound for exp (binary64, $N = 128$)
 
 **Goal.** Find a worst-case bound on
 
@@ -143,7 +143,7 @@ Since $\lvert k\rvert \leq 137630 < 189096$ on every path, **the product is exac
 
 Compare $p$ against $e^{r}-1$ on the reduction interval $[-0.0027076062, 0.0027076062]$ from §5.2.
 
-```sollya
+```
 prec = 300!;
 C2 = 0x1.ffffffffffdbdp-2; C3 = 0x1.555555555543cp-3;
 C4 = 0x1.55555cf172b91p-5; C5 = 0x1.1111167a4d017p-7;
@@ -167,7 +167,7 @@ $$\boxed{ E_{\mathrm{approx}} \leq 2.1073733\times10^{-20} \approx 1.55497\cdot 
 
 Let $t_2 = \mathrm{RN}(x + k_d\cdot \mathrm{hi})$ and $\hat{r} = \mathrm{RN}(t_2 + k_d\cdot \mathrm{lo})$, with exact counterpart $r_2 = x + k_d(\mathrm{hi} + \mathrm{lo})$.
 
-```gappa
+```
 # t2 = RN(x + kd*hi); r = RN(t2 + kd*lo)
 @rnd = float<ieee_64,ne>;
 @Int = fixed<0,dn>;
@@ -226,7 +226,7 @@ $$\mathrm{Mtmp} = \bigl((\mathrm{tail}+r) + (r\cdot r)(C_2 + r C_3)\bigr) + \big
 
  algebraically identical to $\mathrm{tail} + p(r)$ by distributivity and associativity of real arithmetic — lets Gappa correlate each rounded node with its exact counterpart.
 
-```gappa
+```
 # r2=RN(r*r); s1=RN(tail+r); p2=RN(C2+r*C3); s2=RN(s1+r2*p2);
 # q1=RN(r2*r2); p5=RN(C4+r*C5); tmp=RN(s2+q1*p5)
 @rnd = float<ieee_64,ne>;
@@ -285,7 +285,7 @@ $$\boxed{ B_{\mathrm{eval}} = \bigl\lvert \widehat{\mathrm{tmp}} - \mathrm{Mtmp}
 
 By the mean value theorem, with $dP = \max \lvert p'(x)\rvert$ over the reduction interval. Appending to the Sollya script of §6:
 
-```sollya
+```
 I = [-0.0027076062; 0.0027076062];
 
 dp = diff(p);
