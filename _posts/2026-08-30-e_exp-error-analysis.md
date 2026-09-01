@@ -12,7 +12,7 @@ math: true
 mermaid: true
 excerpt: An analysis on the error of glibc's exp function
 ---
-# Worst-Case ULP Error Bound for exp (binary64, $N = 128$)
+## Worst-Case ULP Error Bound for exp (binary64, $N = 128$)
 
 **Goal.** Find a worst-case bound on
 
