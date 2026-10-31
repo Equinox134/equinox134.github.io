@@ -125,7 +125,7 @@ Now consider the bridges of $C_0$ in $G - uv$ (if there are no bridges, the only
 <figcaption align = "center">An outer bridge</figcaption>
 </figure>
 
-Find an outer bridge $B_1$ and an inner bridge $B_2$ that overlap. We can find such $B_1$ and $B_2$ for the following reason. If all bridges were inner or outer, we can draw $uv$ in the exterior or interior of $C_0$ and achieve a planar embedding of $G$, which is a contradiction. Therefore $C_0$ has both an outer bridge and an inner bridge. The reason that there exists a pair that overlaps is, because if not, every inner bridge avoids every outer bridge, and then by Theorem 10 all inner bridges of $C_0$ are transferrable. We can then find a planar embedding of $G - uv$ where $C_0$ only has outer bridges, which again leads to a contradiction. In addition, we can find such $B_2$ that overlaps with $uv$ as well, because if there are no such $B_2$, we can draw $uv$ inside $C_0$ and get a planar embedding of $G$, which is a contradiction.
+Find an outer bridge $B_1$ and an inner bridge $B_2$ that overlap. We can find such $B_1$ and $B_2$ for the following reason. If all bridges were inner or outer, we can draw $uv$ in the exterior or interior of $C_0$ and achieve a planar embedding of $G$, which is a contradiction. Therefore $C_0$ has both an outer bridge and an inner bridge. The reason that there exists a pair that overlaps is, because if not, every inner bridge avoids every outer bridge, and then by Theorem 10 all inner bridges of $C_0$ are transferrable. We can then find a planar embedding of $G - uv$ where $C_0$ only has outer bridges, which again leads to a contradiction. In addition, we can find such $B_2$ that overlaps with $uv$ as well, because if there are no such $B_2$ after removing all bridges that avoid the outer bridges, we can draw $uv$ inside $C_0$ and get a planar embedding of $G$, which is a contradiction.
 
 Let the vertices of attachment of $B_1$ be $x_1, x_2$ and those of $B_2$ be $y_1, y_2, \cdots$. We know that $B_2$ overlaps the arc $uv$ and is skew to $B_1$. We consider 5 cases in term of the positions of $B_1$ and $B_2$. Without loss of generality, we assume that $u, x_2, v, x_1$ lie on the cycle in a clockwise order.
 
@@ -179,7 +179,7 @@ The graph formed by the red and blue nodes, together with the remaining edges, i
 
 Therefore $G$ contains a $K_5$ or $K_{3,3}$ as a minor if and only if is contains a subdivision of $K_5$ or $K_{3,3}$. Therefore Wagner's Theorem and Kuratowski's Theorem are equivalent. We have proven Kuratowski's Theorem to be true, therefore Wagner's Theorem is also true. $\blacksquare$
 
-## Conlcusion
+## Conclusion
 
 We have proven that the forbidden minors for planar graphs are $K_5$ and $K_{3,3}$.
 
